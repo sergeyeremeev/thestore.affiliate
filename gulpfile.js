@@ -35,6 +35,7 @@ gulp.task('copy-scripts', function () {
 // sass to css
 gulp.task('sass', function () {
     gulp.src('dev/sass/*.scss')
+        .pipe(sass().on('error', sass.logError))
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(autoprefixer({browsers: ['last 2 versions']}))

@@ -10,8 +10,15 @@
 @import "components/globals";
 
 // ---------------------- Website Variables -----------------------------
+@import "variables";
 @import "typography";
 
 // ----------------------- Website Modules ------------------------------
 // header
 @import "components/modules/header";
+// footer
+@import "components/modules/footer";
+
+// ------------------------ Website Pages -------------------------------
+// header
+@import "pages/start";
