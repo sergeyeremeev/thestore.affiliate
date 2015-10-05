@@ -1,3 +1,7 @@
+.banner img {
+    max-width: 100%;
+}
+
 .start-icon {
     position: relative;
     display: flex;
@@ -103,6 +107,24 @@
                     width: 65px;
                     height: 65px;
                     background: url(../img/stats-icon.png) no-repeat;
+                }
+
+                &.icon-globe {
+                    width: 67px;
+                    height: 65px;
+                    background: url(../img/icon-present.png) no-repeat;
+                }
+
+                &.icon-ok {
+                    width: 70px;
+                    height: 62px;
+                    background: url(../img/icon-ok.png) no-repeat;
+                }
+
+                &.icon-money {
+                    width: 74px;
+                    height: 46px;
+                    background: url(../img/icon-money.png) no-repeat;
                 }
             }
         }

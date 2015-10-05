@@ -26,6 +26,10 @@ ul {
     margin: 0;
 }
 
+input {
+    -webkit-appearance: none;
+}
+
 // floats
 .left {
     float: left;
