@@ -16,6 +16,10 @@
     justify-content: center;
     border-radius: 50%;
 
+    &.icon-container-green {
+        background: #81bf74;
+    }
+
     .icon-add-user {
         display: inline-block;
         width: 86px;
@@ -30,6 +34,20 @@
         width: 70px;
         height: 70px;
         background: url(../img/icon-envelope.png) no-repeat;
+    }
+
+    .icon-lock {
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        background: url(../img/icon-envelope.png) no-repeat;
+    }
+
+    .icon-done {
+        display: inline-block;
+        width: 72px;
+        height: 72px;
+        background: url(../img/icon-done.png) no-repeat;
     }
 }
 
@@ -151,7 +169,6 @@
 .create-account-form {
     background: #f5f5f5;
     padding: 70px 0 80px;
-
     position: relative;
 
     &:after {
@@ -167,6 +184,21 @@
     &.enabled:after {
         content: none;
     }
+
+    .container {
+        max-width: 500px;
+        padding: 0;
+    }
+
+    form {
+        width: 500px;
+        overflow: auto;
+    }
+}
+
+.signin-form {
+    background: #f5f5f5;
+    padding: 60px 0 60px;
 
     .container {
         max-width: 500px;
@@ -241,7 +273,8 @@
     }
 
     .create-acc-btn,
-    .send-btn {
+    .send-btn,
+    .login-btn {
         display: inline-block;
         border: none;
         width: 200px;
@@ -255,10 +288,15 @@
         text-align: center;
     }
 
-    .send-btn {
+    .send-btn,
+    .login-btn {
         display: block;
         clear: both;
-        margin: auto;
+        margin: 0 auto;
+    }
+
+    .login-btn {
+        margin-bottom: 25px;
     }
 
     &.col-2 {
@@ -274,7 +312,8 @@
     }
 }
 
-.terms {
+.terms,
+.remember-checkbox {
 
     label {
         display: block;
@@ -330,6 +369,11 @@
     }
 }
 
+.remember-checkbox {
+    margin: 10px auto 20px;
+    text-align: center;
+}
+
 .form-right {
     width: 48.5%;
     float: left;
@@ -382,7 +426,8 @@
     }
 }
 
-.contact {
+.contact,
+.signin {
 
     .content-main {
 
@@ -404,4 +449,56 @@
         max-width: 1170px;
         padding: 0 4%;
     }
+}
+
+
+.signin-form .create-new {
+    text-align: center;
+    display: block;
+    color: $colorPink;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.done {
+    background: #f5f5f5;
+
+    .content-main {
+
+        & > h2 {
+            text-align: center;
+            font-size: 62px;
+            color: #333;
+            font-weight: 700;
+            margin: 0 0 15px;
+        }
+
+        & > span {
+            display: block;
+            text-align: center;
+            font-size: 27px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+    }
+}
+
+.go-home {
+    background: #fff;
+    padding: 40px 0;
+}
+
+.to-homepage {
+    display: block;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    background: $colorPink;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+    font-family: Lato;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 auto;
 }
