@@ -49,6 +49,13 @@
         height: 72px;
         background: url(../img/icon-done.png) no-repeat;
     }
+
+    .icon-registered {
+        display: inline-block;
+        width: 84px;
+        height: 84px;
+        background: url(../img/icon-registered.png) no-repeat;
+    }
 }
 
 .register {
@@ -215,8 +222,27 @@
     font-family: Roboto;
     font-weight: 300;
 
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
     .input-wrapper {
         width: 100%;
+        overflow: auto;
+
+        &.col-2 {
+
+            & > div {
+                width: 48%;
+                float: left;
+
+                &:first-of-type {
+                    margin-right: 4%;
+                }
+            }
+        }
 
         label {
             display: block;
@@ -237,6 +263,7 @@
             font-size: 14px;
             color: #9d9d9d;
             margin-bottom: 20px;
+            background: #fff;
             box-shadow: inset 0px -1px 6px 0px rgba(0, 0, 0, 0.07);
 
             &::-webkit-input-placeholder {
@@ -451,7 +478,6 @@
     }
 }
 
-
 .signin-form .create-new {
     text-align: center;
     display: block;
@@ -501,4 +527,103 @@
     font-weight: 700;
     text-align: center;
     margin: 0 auto;
+}
+
+.register-second-step {
+
+    .content-main {
+
+        & > h2 {
+            text-align: center;
+            font-size: 62px;
+            color: #333;
+            font-weight: 300;
+            margin: 0 0 15px;
+        }
+
+        & > p {
+            display: block;
+            text-align: center;
+            font-size: 16px;
+            max-width: 710px;
+            margin: 0 auto 50px;
+        }
+    }
+}
+
+.complete-registration-form {
+    background: #f5f5f5;
+    padding: 50px 0 70px;
+
+    .container {
+        max-width: 1170px;
+        padding: 0 4%;
+    }
+
+    h3 {
+        clear: both;
+        overflow: auto;
+        font-size: 18px;
+        color: $colorPink;
+        margin: 0 0 70px;
+        position: relative;
+        top: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: Roboto;
+    }
+
+    .dropdown-toggle {
+        display: block;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+        color: #333;
+        padding-left: 15px;
+        border: 1px solid #dadada;
+        border-radius: 5px;
+        background: linear-gradient(to bottom, #fff 0%, #f7f7f7 50%, #f0f0f0 100%);
+        position: relative;
+        margin-bottom: 17px;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 7px;
+            right: 9px;
+            width: 20px;
+            height: 20px;
+            background: url(../img/arrow-down.png) no-repeat;
+        }
+    }
+
+    .dropdown-list {
+        display: none;
+    }
+
+    .upload-area {
+        height: 125px;
+        border: 1px dashed #959d9f;
+        background: #fff;
+        padding: 25px;
+        margin-bottom: 50px;
+
+        i {
+            display: block;
+            width: 48px;
+            height: 40px;
+            background: url(../img/icon-upload.png) no-repeat;
+            margin: 0 auto 16px;
+        }
+
+        span {
+            display: block;
+            text-align: center;
+            color: #ee2c78;
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
 }
