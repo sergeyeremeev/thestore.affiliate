@@ -1,7 +1,3 @@
-.banner img {
-    max-width: 100%;
-}
-
 .start-icon {
     position: relative;
     display: flex;
@@ -23,6 +19,12 @@
 
         &.advertiser-icon {
             background: url(../img/icon-advertiser.png) no-repeat;
+        }
+
+        &.publisher-icon {
+            background: url(../img/icon-publisher.png) no-repeat;
+            position: relative;
+            left: 12px;
         }
     }
 }
