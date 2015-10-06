@@ -16,13 +16,20 @@
     justify-content: center;
     border-radius: 50%;
 
-    i {
+    .icon-add-user {
         display: inline-block;
         width: 86px;
         height: 86px;
         background: url(../img/icon-add-user.png) no-repeat;
         position: relative;
         left: 6px;
+    }
+
+    .contact-icon {
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        background: url(../img/icon-envelope.png) no-repeat;
     }
 }
 
@@ -94,6 +101,34 @@
         text-transform: uppercase;
         font-size: 18px;
     }
+
+    &.selected {
+        width: 60%;
+        background: $colorPink;
+
+        i.icon-advertiser {
+            background: url(../img/icon-advertiser.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        i.icon-publisher {
+            background: url(../img/icon-publisher.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        h3,
+        span {
+            color: #fff;
+        }
+    }
+
+    &.non-selected {
+        width: 39.4%;
+
+        .account-type-content {
+            margin: 0 80px;
+        }
+    }
 }
 
 .account-or {
@@ -159,7 +194,8 @@
             text-transform: uppercase;
         }
 
-        input {
+        input,
+        textarea {
             width: 100%;
             height: 36px;
             background: none;
@@ -190,14 +226,26 @@
                 color: #9d9d9d;
                 font-style: italic;
             }
+
+            &:focus {
+                outline: 0;
+                box-shadow: none;
+            }
+        }
+
+        textarea {
+            height: 125px;
+            resize: none;
+            padding-top: 10px;
         }
     }
 
-    .create-acc-btn {
+    .create-acc-btn,
+    .send-btn {
         display: inline-block;
+        border: none;
         width: 200px;
         height: 60px;
-        line-height: 60px;
         background: $colorPink;
         border-radius: 5px;
         color: #fff;
@@ -205,6 +253,24 @@
         font-family: Lato;
         font-weight: 700;
         text-align: center;
+    }
+
+    .send-btn {
+        display: block;
+        clear: both;
+        margin: auto;
+    }
+
+    &.col-2 {
+
+        .input-wrapper {
+            width: 48.5%;
+            float: left;
+
+            &:nth-of-type(odd) {
+                margin-right: 3%;
+            }
+        }
     }
 }
 
@@ -261,5 +327,81 @@
         a {
             text-decoration: underline;
         }
+    }
+}
+
+.form-right {
+    width: 48.5%;
+    float: left;
+    padding-top: 20px;
+    margin-bottom: 60px;
+
+    label {
+        display: block;
+        font-size: 12px;
+        color: #333333;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .dropdown-toggle {
+        display: block;
+        width: 50%;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+        color: #333;
+        padding-left: 15px;
+        border: 1px solid #dadada;
+        border-radius: 5px;
+        background: linear-gradient(to bottom, #fff 0%, #f7f7f7 50%, #f0f0f0 100%);
+        position: relative;
+        margin-bottom: 17px;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 7px;
+            right: 9px;
+            width: 20px;
+            height: 20px;
+            background: url(../img/arrow-down.png) no-repeat;
+        }
+    }
+
+    .dropdown-list {
+        display: none;
+    }
+
+    .form-dropdown:last-of-type {
+
+        .dropdown-toggle {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.contact {
+
+    .content-main {
+
+        & > h2 {
+            text-align: center;
+            font-size: 62px;
+            color: $colorPink;
+            font-weight: 300;
+            margin: 0 0 25px;
+        }
+    }
+}
+
+.contact-form {
+    background: #f5f5f5;
+    padding: 50px 0 70px;
+
+    .container {
+        max-width: 1170px;
+        padding: 0 4%;
     }
 }

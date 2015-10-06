@@ -92,7 +92,7 @@ gulp.task('serve', function () {
     gulp.watch('dev/**/*.scss', ['sass']);
     gulp.watch('dev/**/*.html', ['copy-html']);
     gulp.watch(['dev/**/*.png', 'dev/**/*.jpg'], ['images']);
-    //gulp.watch('dev/**/*.js', ['scripts']);
+    gulp.watch('dev/**/*.js', ['copy-scripts']);
 });
 
 // default build task to clean build directory, then create the correct folder

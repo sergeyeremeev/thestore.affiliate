@@ -25,66 +25,70 @@
                     </div>
                 </div>
             </header>
-            <div class="content register">
+            <div class="content contact">
                 <div class="top-bar">
                     <div class="icon-container">
-                        <i class="add-user-icon"></i>
+                        <i class="contact-icon"></i>
                     </div>
                 </div>
                 <div class="content-main">
-                    <h2>Create new account</h2>
-                    <p>Join hundreds of Advertisers and thousands of Publishers,
-                         its simple and only takes 10 seconds.  Publishers get
-                        immediate access to thousands of time limited deals and
-                        Advertisers get immediate access to thousands of publishers.
-                        It’s a match made in virtual heaven, let’s do this!</p>
-                    <div class="choose-account-type">
-                        <a href="#" class="account-type-selector acc-adv">
-                            <div class="account-type-select left account-type-advertiser">
-                                <div class="account-type-content right">
-                                    <i class="account-icon icon-advertiser"></i>
-                                    <h3>Advertiser</h3>
-                                    <span>Drive more sales with the store</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="account-type-selector acc-pub">
-                            <div class="account-type-select right account-type-publisher">
-                                <div class="account-type-content left">
-                                    <i class="account-icon icon-publisher"></i>
-                                    <h3>Publisher</h3>
-                                    <span>Monetize traffic and make money</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="account-or">
-                            or
-                        </div>
-                    </div>
-                    <div class="create-account-form">
+                    <h2>Contact us</h2>
+                    <div class="contact-form">
                         <div class="container">
-                            <form class="standard-input">
+                            <form class="standard-input col-2">
+                                <div class="input-wrapper">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" id="fname" placeholder="Please enter something">
+                                </div>
+                                <div class="input-wrapper">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" id="lname" placeholder="Please enter something">
+                                </div>
                                 <div class="input-wrapper">
                                     <label for="email">Email</label>
                                     <input type="email" id="email" placeholder="Please enter something">
                                 </div>
                                 <div class="input-wrapper">
-                                    <label for="password1">Password</label>
-                                    <input type="password" id="password1" placeholder="Please enter something">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" id="phone" placeholder="Please enter something">
                                 </div>
                                 <div class="input-wrapper">
-                                    <label for="password2">Re-enter password</label>
-                                    <input type="password" id="password2" placeholder="Please enter something">
+                                    <label for="company">Company</label>
+                                    <input type="text" id="company" placeholder="Please enter something">
                                 </div>
-                                <div class="form-bottom">
-                                    <div class="terms left">
-                                        <label for="terms">Terms and conditions</label>
-                                        <input type="checkbox" id="terms-btn">
-                                        <label for="terms-btn"><span></span></label>
-                                        <span>I agree with <a href="#">terms and conditions</a></span>
+                                <div class="input-wrapper">
+                                    <label for="website">Website</label>
+                                    <input type="text" id="website" placeholder="Please enter something">
+                                </div>
+                                <div class="input-wrapper">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" placeholder="Please enter something"></textarea>
+                                </div>
+                                <div class="form-right">
+                                    <div class="form-dropdown revenue-dropdown">
+                                        <label for="revenue">Online Revenue (Last 12 Months)</label>
+                                        <a href="#" class="dropdown-toggle revenue-toggle">Select one</a>
+                                        <ul class="dropdown-list">
+                                            <li><a href="#" class="dropdown-selector">1</a></li>
+                                            <li><a href="#" class="dropdown-selector">2</a></li>
+                                            <li><a href="#" class="dropdown-selector">3</a></li>
+                                            <li><a href="#" class="dropdown-selector">4</a></li>
+                                            <li><a href="#" class="dropdown-selector">5</a></li>
+                                        </ul>
                                     </div>
-                                    <input type="submit" value="create account" class="create-acc-btn right">
+                                    <div class="form-dropdown conversion-dropdown">
+                                        <label for="conversion">Primary method of conversion</label>
+                                        <a href="#" class="dropdown-toggle conversion-toggle">Select one</a>
+                                        <ul class="dropdown-list">
+                                            <li><a href="#" class="dropdown-selector">1</a></li>
+                                            <li><a href="#" class="dropdown-selector">2</a></li>
+                                            <li><a href="#" class="dropdown-selector">3</a></li>
+                                            <li><a href="#" class="dropdown-selector">4</a></li>
+                                            <li><a href="#" class="dropdown-selector">5</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <input type="submit" value="send" class="send-btn">
                             </form>
                         </div>
                     </div>
