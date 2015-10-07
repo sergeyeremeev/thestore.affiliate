@@ -36,7 +36,7 @@ gulp.task('copy-scripts', function () {
 gulp.task('sass', function () {
     gulp.src('dev/sass/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(sass({outputStyle: 'expanded'}))
         .pipe(autoprefixer({browsers: ['last 2 versions']}))
         .pipe(gulp.dest('build/css/'));
 });

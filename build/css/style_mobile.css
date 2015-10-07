@@ -1,0 +1,251 @@
+.home {
+  background: #f5f5f5;
+}
+
+.home-banner {
+  margin-bottom: 10px;
+}
+
+.home-banner .home-banner-text h2 {
+  font-size: 16px;
+  margin: 0 0 5px;
+}
+
+.home-banner .home-banner-text p {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 10px;
+}
+
+.home-banner .home-banner-text .see-more {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.account-types {
+  background: #f5f5f5;
+}
+
+.account-types .container {
+  padding: 0 !important;
+}
+
+.account-type-single {
+  width: 100%;
+  height: auto;
+  padding-bottom: 25px;
+  padding-top: 15px;
+  margin-bottom: 30px;
+  border-radius: 0;
+}
+
+.account-type-single i {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 5px;
+}
+
+.account-type-single i.icon-advertiser {
+  background: url(../img/icon-advertiser.png) no-repeat;
+  background-size: 100%;
+}
+
+.account-type-single i.icon-publisher {
+  background: url(../img/icon-publisher.png) no-repeat;
+  background-size: 100%;
+}
+
+.account-type-single h3 {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.account-type-single span {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.account-type-single p {
+  font-size: 10px;
+  max-width: 200px;
+}
+
+.account-type-single .apply-now {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  bottom: -15px;
+}
+
+.account-type-bg {
+  display: none;
+}
+
+.arrows-icon {
+  display: none;
+}
+
+.home-info {
+  padding-top: 15px;
+}
+
+.home-info .container {
+  max-width: 1170px;
+  padding: 0 1% !important;
+}
+
+.home-info .info-column {
+  text-align: center;
+  width: 100%;
+  float: none;
+  margin-bottom: 15px;
+}
+
+.home-info h3 {
+  font-size: 18px;
+}
+
+.home-info p {
+  font-size: 12px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.home-info .read-more {
+  width: 110px;
+  height: 32px;
+  line-height: 28px;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.subscribe-module {
+  padding: 15px 0;
+}
+
+.subscribe-module .heart-icon {
+  margin-bottom: 0;
+}
+
+.subscribe-module .heart-icon i {
+  display: inline-block;
+  width: 40px;
+  height: 42px;
+  background: url(../img/heart-icon.png) no-repeat;
+  background-size: 100%;
+}
+
+.subscribe-module span {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.subscribe-module form {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.subscribe-module input {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  background: none;
+  padding: 0 30px;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.subscribe-module input[type="submit"] {
+  display: none;
+}
+
+.subscribe-module input:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.subscribe-module input::-webkit-input-placeholder {
+  color: #fff;
+  font-style: italic;
+}
+
+.subscribe-module input:-moz-placeholder {
+  color: #fff;
+  font-style: italic;
+}
+
+.subscribe-module input::-moz-placeholder {
+  color: #fff;
+  font-style: italic;
+}
+
+.subscribe-module input:-ms-input-placeholder {
+  color: #fff;
+  font-style: italic;
+}
+
+.subscribe-module .icon-mail {
+  width: 25px;
+  height: 25px;
+  top: 5px;
+  right: 6px;
+  background: url(../img/icon-mail_white.png) no-repeat;
+  background-size: 100%;
+}
+
+.testimonials {
+  padding-top: 15px;
+}
+
+.testimonials .container {
+  max-width: 1170px;
+  padding: 0 4%;
+}
+
+.testimonials .quotes {
+  display: block;
+  width: 25px;
+  height: 20px;
+  margin: 0 auto 5px;
+  background: url(../img/quotes.png) no-repeat;
+  background-size: 100%;
+}
+
+.testimonials h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.testimonials .testimonial-single {
+  width: 100%;
+  float: none;
+}
+
+.testimonials .testimonial-content {
+  padding: 15px;
+  font-size: 12px;
+  height: auto;
+  margin-bottom: 45px;
+}
+
+.testimonials .testimonial-author {
+  margin-bottom: 20px;
+}
+
+.testimonials .testimonial-author .name {
+  font-size: 16px;
+}
+
+.testimonials .testimonial-author .role {
+  font-size: 12px;
+}

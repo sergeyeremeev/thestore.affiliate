@@ -1,0 +1,109 @@
+.home-banner {
+  margin-bottom: 16px;
+}
+
+.home-banner .home-banner-text h2 {
+  font-size: 48px;
+  margin: 0 0 10px;
+}
+
+.home-banner .home-banner-text p {
+  margin: 0 0 30px;
+}
+
+.account-type-single {
+  width: 264px;
+  height: 264px;
+  padding-top: 30px;
+  margin-bottom: 25px;
+}
+
+.account-type-single i {
+  width: 65px;
+  height: 65px;
+}
+
+.account-type-single i.icon-advertiser {
+  background: url(../img/icon-advertiser.png) no-repeat;
+  background-size: 100%;
+}
+
+.account-type-single i.icon-publisher {
+  background: url(../img/icon-publisher.png) no-repeat;
+  background-size: 100%;
+}
+
+.account-type-single h3 {
+  font-size: 24px;
+}
+
+.account-type-single span {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.account-type-single p {
+  font-size: 12px;
+  max-width: 200px;
+}
+
+.account-type-single .apply-now {
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.account-type-bg {
+  height: 150px;
+}
+
+.arrows-icon {
+  -webkit-transform: translateX(-50%) translateY(-45px);
+          transform: translateX(-50%) translateY(-45px);
+  width: 66px;
+  height: 66px;
+}
+
+.arrows-icon i {
+  display: inline-block;
+  width: 30px;
+  height: 18px;
+  background: url(../img/arrows.png) no-repeat;
+  background-size: 100%;
+}
+
+.home-info {
+  padding-top: 45px;
+}
+
+.home-info .container {
+  max-width: 1170px;
+  padding: 0 1% !important;
+}
+
+.home-info .info-column {
+  text-align: center;
+  width: 47%;
+}
+
+.home-info h3 {
+  font-size: 24px;
+}
+
+.home-info p {
+  font-size: 14px;
+  height: 225px;
+}
+
+.home-info .read-more {
+  width: 140px;
+  height: 40px;
+  line-height: 38px;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.testimonials .testimonial-content {
+  height: 155px;
+}
