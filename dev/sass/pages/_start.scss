@@ -143,3 +143,126 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+
+    .start-icon {
+        width: 78px;
+        height: 78px;
+        transform: translateX(-50%) translateY(-40px);
+
+        i {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            margin-bottom: 20px;
+            margin-bottom: 5px;
+
+            &.advertiser-icon {
+                background: url(../img/icon-advertiser.png) no-repeat;
+                background-size: 100%;
+            }
+
+            &.publisher-icon {
+                background: url(../img/icon-publisher.png) no-repeat;
+                background-size: 100%;
+                left: 5px;
+            }
+        }
+    }
+
+    .get-started {
+        padding: 50px 0 20px;
+        top: -78px;
+        margin-bottom: -78px;
+
+        h2 {
+            font-size: 24px;
+            margin: 0 0 15px;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 0 auto 20px;
+            line-height: 1.3;
+        }
+
+        .signup-large {
+            width: 200px;
+            height: 38px;
+            line-height: 38px;
+            font-size: 16px;
+        }
+    }
+
+    .account-type-info {
+        padding-bottom: 15px;
+
+        .info-column {
+            float: none;
+            width: 100%;
+            margin-right: 0;
+            padding-top: 20px;
+            margin-bottom: 15px;
+
+            .info-icon {
+                height: auto;
+                margin-bottom: 6px;
+
+                i {
+
+                    &.icon-globe {
+                        width: 41px;
+                        height: 41px;
+                        background: url(../img/globe-icon.png) no-repeat;
+                        background-size: 100%;
+                    }
+
+                    &.icon-finger {
+                        width: 36px;
+                        height: 43px;
+                        background: url(../img/finger-icon.png) no-repeat;
+                        background-size: 100%;
+                    }
+
+                    &.icon-stats {
+                        width: 40px;
+                        height: 40px;
+                        background: url(../img/stats-icon.png) no-repeat;
+                        background-size: 100%;
+                    }
+
+                    &.icon-present {
+                        width: 42px;
+                        height: 41px;
+                        background: url(../img/icon-present.png) no-repeat;
+                        background-size: 100%;
+                    }
+
+                    &.icon-ok {
+                        width: 42px;
+                        height: 40px;
+                        background: url(../img/icon-ok.png) no-repeat;
+                        background-size: 100%;
+                    }
+
+                    &.icon-money {
+                        width: 43px;
+                        height: 35px;
+                        background: url(../img/icon-money.png) no-repeat;
+                        background-size: 100%;
+                    }
+                }
+            }
+
+            h3 {
+                margin: 0 0 5px;
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+}

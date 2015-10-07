@@ -332,7 +332,7 @@
         background: #fff;
         padding: 20px;
         font-size: 14px;
-        box-shadow: 0px -5px 7px 2px rgba(5, 5, 6, 0.07);
+        box-shadow: 0px 5px 7px 2px rgba(5, 5, 6, 0.07);
         border-radius: 10px;
         height: 125px;
         margin-bottom: 55px;
@@ -537,7 +537,10 @@
         .home-banner-text {
 
             h2 {
-                font-size: 16px;
+                font-size: 28px;
+                padding: 0 10px;
+                margin: 0 0 5px;
+                text-align: center;
                 margin: 0 0 5px;
             }
 
@@ -779,6 +782,24 @@
 
             .role {
                 font-size: 12px;
+            }
+        }
+    }
+}
+
+@media screen and (width: 320px) {
+
+    .home-banner {
+        margin-bottom: 10px;
+
+        .home-banner-text {
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 9px;
             }
         }
     }

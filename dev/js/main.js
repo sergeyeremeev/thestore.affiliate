@@ -12,7 +12,7 @@
 
         if ($this.children('.account-type-select').hasClass('selected')) {
             $this.closest('.choose-account-type').find('.account-type-select').removeClass('non-selected selected');
-            $('.account-or').show();
+            $('.account-or').addClass('visible');
             $('.create-account-form').removeClass('enabled');
         } else if ($this.children('.account-type-select').hasClass('non-selected')) {
             $this.closest('.choose-account-type').find('.account-type-select').removeClass('selected').addClass('non-selected');
@@ -20,8 +20,17 @@
         } else {
             $this.closest('.choose-account-type').find('.account-type-select').addClass('non-selected');
             $this.children('.account-type-select').addClass('selected').removeClass('non-selected');
-            $('.account-or').hide();
+            $('.account-or').removeClass('visible');
             $('.create-account-form').addClass('enabled');
         }
+    });
+
+    // mobile menu toggle
+    $(document).on('click', '.mobile-menu-toggle', function (e) {
+        e.preventDefault();
+        console.log('gi');
+        $(this).find('.toggler').toggleClass('active');
+        $('.mobile-menu').toggleClass('visible');
+        $('body').toggleClass('mobile-menu-open');
     });
 }(jQuery));
