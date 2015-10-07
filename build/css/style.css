@@ -1511,6 +1511,7 @@ body.mobile-menu-open {
   .account-type-single i.icon-publisher {
     background: url(../img/icon-publisher.png) no-repeat;
     background-size: 100%;
+    left: 6px;
   }
   .account-type-single h3 {
     font-size: 18px;
