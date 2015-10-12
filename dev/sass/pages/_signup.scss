@@ -713,6 +713,10 @@
     font-weight: 700;
     text-align: center;
     margin: 0 auto;
+
+    &:hover {
+        color: #fff;
+    }
 }
 
 .register-second-step {

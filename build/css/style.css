@@ -3186,6 +3186,10 @@ body.mobile-menu-open {
   margin: 0 auto;
 }
 
+.to-homepage:hover {
+  color: #fff;
+}
+
 .register-second-step .content-main > h2 {
   text-align: center;
   font-size: 62px;
