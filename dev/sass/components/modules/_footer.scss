@@ -71,14 +71,68 @@
 
                 &.facebook {
                     background: url(../img/facebook.png) no-repeat;
+
+                    @media  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+                        only screen and (   min--moz-device-pixel-ratio: 1.5),
+                        only screen and (     -o-min-device-pixel-ratio: 3/2),
+                        only screen and (        min-device-pixel-ratio: 1.5),
+                        only screen and (min-resolution: 192dpi) {
+                            background: url(../img/facebook_2x.png) no-repeat;
+                            background-size: 100%;
+                        }
+
+                    @media  only screen and (-webkit-min-device-pixel-ratio: 2.5),
+                        only screen and (   min--moz-device-pixel-ratio: 2.5),
+                        only screen and (     -o-min-device-pixel-ratio: 5/2),
+                        only screen and (        min-device-pixel-ratio: 2.5),
+                        only screen and (min-resolution: 192dpi) {
+                            background: url(../img/facebook_3x.png) no-repeat;
+                            background-size: 100%;
+                        }
                 }
 
                 &.twitter {
                     background: url(../img/twitter.png) no-repeat;
+
+                    @media  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+                        only screen and (   min--moz-device-pixel-ratio: 1.5),
+                        only screen and (     -o-min-device-pixel-ratio: 3/2),
+                        only screen and (        min-device-pixel-ratio: 1.5),
+                        only screen and (min-resolution: 192dpi) {
+                            background: url(../img/twitter_2x.png) no-repeat;
+                            background-size: 100%;
+                        }
+
+                    @media  only screen and (-webkit-min-device-pixel-ratio: 2.5),
+                        only screen and (   min--moz-device-pixel-ratio: 2.5),
+                        only screen and (     -o-min-device-pixel-ratio: 5/2),
+                        only screen and (        min-device-pixel-ratio: 2.5),
+                        only screen and (min-resolution: 192dpi) {
+                            background: url(../img/twitter_3x.png) no-repeat;
+                            background-size: 100%;
+                        }
                 }
 
                 &.linkedin {
                     background: url(../img/linkedin.png) no-repeat;
+
+                    @media  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+                        only screen and (   min--moz-device-pixel-ratio: 1.5),
+                        only screen and (     -o-min-device-pixel-ratio: 3/2),
+                        only screen and (        min-device-pixel-ratio: 1.5),
+                        only screen and (min-resolution: 192dpi) {
+                            background: url(../img/linkedin_2x.png) no-repeat;
+                            background-size: 100%;
+                        }
+
+                    @media  only screen and (-webkit-min-device-pixel-ratio: 2.5),
+                        only screen and (   min--moz-device-pixel-ratio: 2.5),
+                        only screen and (     -o-min-device-pixel-ratio: 5/2),
+                        only screen and (        min-device-pixel-ratio: 2.5),
+                        only screen and (min-resolution: 192dpi) {
+                            background: url(../img/linkedin_3x.png) no-repeat;
+                            background-size: 100%;
+                        }
                 }
             }
         }
@@ -140,6 +194,24 @@
             top: 4px;
             right: 5px;
             background: url(../img/icon-mail.png) no-repeat;
+
+            @media  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+                only screen and (   min--moz-device-pixel-ratio: 1.5),
+                only screen and (     -o-min-device-pixel-ratio: 3/2),
+                only screen and (        min-device-pixel-ratio: 1.5),
+                only screen and (min-resolution: 192dpi) {
+                    background: url(../img/icon-mail_2x.png) no-repeat;
+                    background-size: 100%;
+                }
+
+            @media  only screen and (-webkit-min-device-pixel-ratio: 2.5),
+                only screen and (   min--moz-device-pixel-ratio: 2.5),
+                only screen and (     -o-min-device-pixel-ratio: 5/2),
+                only screen and (        min-device-pixel-ratio: 2.5),
+                only screen and (min-resolution: 192dpi) {
+                    background: url(../img/icon-mail_3x.png) no-repeat;
+                    background-size: 100%;
+                }
         }
     }
 

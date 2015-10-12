@@ -32,4 +32,7 @@
         $('.mobile-menu').toggleClass('visible');
         $('body').toggleClass('mobile-menu-open');
     });
+
+    // custom select
+    $('.custom-select').customSelect();
 }(jQuery));
