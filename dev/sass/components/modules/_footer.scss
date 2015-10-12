@@ -1,10 +1,11 @@
 .footer-main {
     background: #333333;
     font-size: 14px;
+    padding: 50px 0;
 
-    .container {
-        max-width: 1170px;
-        padding: 50px 2% 50px 4%;
+    a,
+    p {
+        color: $colorGrey !important;
     }
 
     .footer-navigation {
@@ -166,7 +167,7 @@
 
     li {
         position: relative;
-        top: 3px;
+        top: 2px;
         float: left;
         margin-right: 5px;
         padding-right: 5px;
@@ -186,9 +187,17 @@
     }
 }
 
+@media only screen and (max-width: 1024px) {
+    .footer-main .footer-navigation ul {
+        height: 330px;
+    }
+}
+
 @media only screen and (max-width: 767px) {
     .footer-main {
         font-size: 12px;
+        padding-bottom: 0;
+        padding-top: 20px;
 
         .container {
             max-width: 1170px;
@@ -219,6 +228,10 @@
             }
         }
 
+        .footer-navigation ul {
+            height: 260px;
+        }
+
         .publisher-list {
             margin-right: 4%;
             width: 48%;
@@ -230,7 +243,7 @@
 
         .footer-connect {
             text-align: center;
-            float: none;
+            float: none !important;
             padding-right: 0;
             border-right: 0;
             margin-bottom: 10px;
@@ -246,7 +259,7 @@
             padding-left: 0;
             width: 100%;
             float: none;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
 
             form {
                 position: relative;
@@ -261,7 +274,7 @@
 
         .footer-contact {
             text-align: center;
-            float: none;
+            float: none !important;
 
             p {
                 line-height: 1.2;

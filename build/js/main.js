@@ -26,10 +26,9 @@
     });
 
     // mobile menu toggle
-    $(document).on('click', '.mobile-menu-toggle', function (e) {
+    $(document).on('click touchend', '.mobile-menu-toggle', function (e) {
         e.preventDefault();
-        console.log('gi');
-        $(this).find('.toggler').toggleClass('active');
+        $('.toggler').toggleClass('active');
         $('.mobile-menu').toggleClass('visible');
         $('body').toggleClass('mobile-menu-open');
     });

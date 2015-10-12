@@ -10,14 +10,8 @@ html {
 }
 
 // common elements
-.container {
-    width: 100%;
-    margin: 0 auto;
-    overflow: auto;
-}
-
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
 }
 
@@ -31,11 +25,15 @@ input {
     -webkit-appearance: none;
 }
 
-// floats
-.left {
-    float: left;
-}
+.content {
 
-.right {
-    float: right;
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
 }

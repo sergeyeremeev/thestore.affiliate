@@ -402,14 +402,8 @@ html {
   box-sizing: inherit;
 }
 
-.container {
-  width: 100%;
-  margin: 0 auto;
-  overflow: auto;
-}
-
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
 }
 
@@ -423,15 +417,28 @@ input {
   -webkit-appearance: none;
 }
 
-.left {
-  float: left;
+.content:before,
+.content:after {
+  content: " ";
+  display: table;
 }
 
-.right {
-  float: right;
+.content:after {
+  clear: both;
 }
 
-html {
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+ul,
+li,
+a {
   font-family: Lato;
   color: #959d9f;
 }
@@ -448,21 +455,22 @@ body.mobile-menu-open {
   overflow: hidden;
 }
 
-.header-main {
-  position: fixed;
-  z-index: 99;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background: #363636;
+.wrapper {
+  padding-top: 50px;
 }
 
-.header-main .container {
-  max-width: 1170px;
+.header-main {
+  height: 50px;
+  background: #363636;
+  margin: 0;
+  border: 0;
 }
 
 .mobile-menu-toggle {
+  display: none;
+}
+
+.mobile-menu {
   display: none;
 }
 
@@ -475,15 +483,30 @@ body.mobile-menu-open {
   display: inline-block;
   width: 146px;
   height: 22px;
+  padding: 0 !important;
+  margin: 0 !important;
   text-indent: 101%;
   overflow: hidden;
   white-space: nowrap;
   background: url(../img/logo.jpg) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .main-logo {
+    background: url(../img/logo_2x.jpg) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .main-logo {
+    background: url(../img/logo_3x.jpg) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .header-right {
   width: calc(100% - 146px);
-  padding-right: 7%;
 }
 
 .header-nav {
@@ -496,12 +519,15 @@ body.mobile-menu-open {
   float: left;
   color: #d5d5d5;
   font-weight: 300;
-  margin-right: 25px;
   font-size: 14px;
 }
 
 .header-nav li:last-child {
   margin-right: 0;
+}
+
+.header-nav li a {
+  color: inherit !important;
 }
 
 .header-sign-in {
@@ -511,7 +537,6 @@ body.mobile-menu-open {
   margin-top: 10px;
   border-radius: 4px;
   background: #ff636f;
-  color: #fff;
   font-weight: 300;
   font-size: 14px;
   display: -webkit-flex;
@@ -528,6 +553,7 @@ body.mobile-menu-open {
 .header-sign-in span {
   line-height: 1;
   margin-right: 6px;
+  color: #fff;
 }
 
 .header-sign-in i {
@@ -537,9 +563,18 @@ body.mobile-menu-open {
   background: url(../img/icon-user-signin.png) no-repeat;
 }
 
-.content {
-  position: relative;
-  top: 0;
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .header-sign-in i {
+    background: url(../img/icon-user-signin_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .header-sign-in i {
+    background: url(../img/icon-user-signin_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -552,15 +587,17 @@ body.mobile-menu-open {
 }
 
 @media screen and (max-width: 767px) {
-  .content {
-    position: relative;
-    top: 50px;
-    margin-bottom: 50px;
+  .header-main .container {
+    height: 50px;
+    padding-left: 5% !important;
   }
   .header-right {
     display: none;
   }
   .mobile-menu-toggle {
+    position: absolute;
+    top: 2px;
+    right: 0;
     display: inline-block;
     float: right;
     margin-right: 14px;
@@ -617,15 +654,7 @@ body.mobile-menu-open {
     bottom: 0;
     left: 0;
     right: 0;
-    background: transparent;
-    transition: background 200ms ease 0.2s, -webkit-transform 400ms ease 0.2s, z-index 10ms linear 0.4s;
-    transition: background 200ms ease 0.2s, transform 400ms ease 0.2s, z-index 10ms linear 0.4s;
-    -webkit-transform: skew(-90deg);
-            transform: skew(-90deg);
-    -webkit-transform-origin: right top;
-            transform-origin: right top;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    background: #333;
   }
   .mobile-menu nav {
     margin-right: 0;
@@ -653,23 +682,20 @@ body.mobile-menu-open {
             transform: translateX(-50%);
   }
   .mobile-menu.visible {
+    display: block;
     z-index: 98;
-    -webkit-transform: skew(0);
-            transform: skew(0);
-    background: #2d2d2d;
-    transition: background 200ms ease, -webkit-transform 400ms ease, z-index 10ms linear 0s;
-    transition: background 200ms ease, transform 400ms ease, z-index 10ms linear 0s;
   }
 }
 
 .footer-main {
   background: #333333;
   font-size: 14px;
+  padding: 50px 0;
 }
 
-.footer-main .container {
-  max-width: 1170px;
-  padding: 50px 2% 50px 4%;
+.footer-main a,
+.footer-main p {
+  color: #959d9f !important;
 }
 
 .footer-main .footer-navigation {
@@ -832,7 +858,7 @@ body.mobile-menu-open {
 
 .site-info li {
   position: relative;
-  top: 3px;
+  top: 2px;
   float: left;
   margin-right: 5px;
   padding-right: 5px;
@@ -851,9 +877,17 @@ body.mobile-menu-open {
   top: -2px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .footer-main .footer-navigation ul {
+    height: 330px;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .footer-main {
     font-size: 12px;
+    padding-bottom: 0;
+    padding-top: 20px;
   }
   .footer-main .container {
     max-width: 1170px;
@@ -882,6 +916,9 @@ body.mobile-menu-open {
             column-fill: auto;
     height: 260px;
   }
+  .footer-main .footer-navigation ul {
+    height: 260px;
+  }
   .footer-main .publisher-list {
     margin-right: 4%;
     width: 48%;
@@ -891,7 +928,7 @@ body.mobile-menu-open {
   }
   .footer-main .footer-connect {
     text-align: center;
-    float: none;
+    float: none !important;
     padding-right: 0;
     border-right: 0;
     margin-bottom: 10px;
@@ -905,7 +942,7 @@ body.mobile-menu-open {
     padding-left: 0;
     width: 100%;
     float: none;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   .footer-main .update-signup form {
     position: relative;
@@ -917,7 +954,7 @@ body.mobile-menu-open {
   }
   .footer-main .footer-contact {
     text-align: center;
-    float: none;
+    float: none !important;
   }
   .footer-main .footer-contact p {
     line-height: 1.2;
@@ -983,6 +1020,11 @@ body.mobile-menu-open {
   font-size: 62px;
   margin: 0 0 30px;
   font-weight: 300;
+  color: inherit;
+}
+
+.home-banner .home-banner-text h2 span {
+  color: inherit;
 }
 
 .home-banner .home-banner-text p {
@@ -992,6 +1034,11 @@ body.mobile-menu-open {
   margin: 0 0 75px;
   text-align: center;
   font-weight: 700;
+  color: inherit;
+}
+
+.home-banner .home-banner-text p span {
+  color: inherit;
 }
 
 .home-banner .home-banner-text .see-more {
@@ -1009,11 +1056,6 @@ body.mobile-menu-open {
 .account-types {
   overflow: auto;
   position: relative;
-}
-
-.account-types .container {
-  max-width: 1170px;
-  padding: 0 4%;
 }
 
 .account-type-single {
@@ -1039,10 +1081,38 @@ body.mobile-menu-open {
   background: url(../img/icon-advertiser.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-single i.icon-advertiser {
+    background: url(../img/icon-advertiser_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-single i.icon-advertiser {
+    background: url(../img/icon-advertiser_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .account-type-single i.icon-publisher {
   background: url(../img/icon-publisher.png) no-repeat;
   position: relative;
   left: 12px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-single i.icon-publisher {
+    background: url(../img/icon-publisher_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-single i.icon-publisher {
+    background: url(../img/icon-publisher_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .account-type-single h3 {
@@ -1082,6 +1152,14 @@ body.mobile-menu-open {
   color: #fff;
   font-size: 20px;
   text-align: center;
+}
+
+.account-type-single.pull-left {
+  margin-left: 2.5%;
+}
+
+.account-type-single.pull-right {
+  margin-right: 2.5%;
 }
 
 .account-type-bg {
@@ -1130,15 +1208,24 @@ body.mobile-menu-open {
   background: url(../img/arrows.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .arrows-icon i {
+    background: url(../img/arrows_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .arrows-icon i {
+    background: url(../img/arrows_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .home-info {
   padding-top: 55px;
   background: #f5f5f5;
   margin-bottom: 10px;
-}
-
-.home-info .container {
-  max-width: 1170px;
-  padding: 0 2% !important;
 }
 
 .home-info .info-column {
@@ -1188,6 +1275,20 @@ body.mobile-menu-open {
   width: 81px;
   height: 83px;
   background: url(../img/heart-icon.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .subscribe-module .heart-icon i {
+    background: url(../img/heart-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .subscribe-module .heart-icon i {
+    background: url(../img/heart-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .subscribe-module span {
@@ -1255,15 +1356,24 @@ body.mobile-menu-open {
   background: url(../img/icon-mail_white.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .subscribe-module .icon-mail {
+    background: url(../img/icon-mail_white_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .subscribe-module .icon-mail {
+    background: url(../img/icon-mail_white_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .testimonials {
   background: #f5f5f5;
   padding-top: 35px;
   text-align: center;
-}
-
-.testimonials .container {
-  max-width: 1170px;
-  padding: 0 4%;
 }
 
 .testimonials .quotes {
@@ -1272,6 +1382,20 @@ body.mobile-menu-open {
   height: 28px;
   margin: 0 auto 15px;
   background: url(../img/quotes.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .testimonials .quotes {
+    background: url(../img/quotes_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .testimonials .quotes {
+    background: url(../img/quotes_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .testimonials h2 {
@@ -1301,7 +1425,10 @@ body.mobile-menu-open {
 
 .testimonials .testimonial-content blockquote {
   margin: 0;
+  padding: 0;
   line-height: 1.5;
+  border: 0;
+  font-size: 14px;
 }
 
 .testimonials .testimonial-content:after {
@@ -1390,10 +1517,44 @@ body.mobile-menu-open {
     background: url(../img/icon-advertiser.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-advertiser {
+    background: url(../img/icon-advertiser_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-advertiser {
+    background: url(../img/icon-advertiser_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
   .account-type-single i.icon-publisher {
     background: url(../img/icon-publisher.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-publisher {
+    background: url(../img/icon-publisher_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-publisher {
+    background: url(../img/icon-publisher_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
   .account-type-single h3 {
     font-size: 24px;
   }
@@ -1427,12 +1588,25 @@ body.mobile-menu-open {
     background: url(../img/arrows.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .arrows-icon i {
+    background: url(../img/arrows_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 1024px) and (min-resolution: 192dpi) {
+  .arrows-icon i {
+    background: url(../img/arrows_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
   .home-info {
     padding-top: 45px;
-  }
-  .home-info .container {
-    max-width: 1170px;
-    padding: 0 1% !important;
   }
   .home-info .info-column {
     text-align: center;
@@ -1469,13 +1643,13 @@ body.mobile-menu-open {
     padding: 0 10px;
     margin: 0 0 5px;
     text-align: center;
-    margin: 0 0 5px;
+    line-height: 1;
   }
   .home-banner .home-banner-text p {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 400;
     line-height: 1;
-    margin: 0 0 10px;
+    margin: 0 0 5px;
     padding: 0 15px;
   }
   .home-banner .home-banner-text .see-more {
@@ -1498,6 +1672,8 @@ body.mobile-menu-open {
     padding-top: 15px;
     margin-bottom: 30px;
     border-radius: 0;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
   .account-type-single i {
     width: 45px;
@@ -1508,11 +1684,45 @@ body.mobile-menu-open {
     background: url(../img/icon-advertiser.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-advertiser {
+    background: url(../img/icon-advertiser_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-advertiser {
+    background: url(../img/icon-advertiser_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-single i.icon-publisher {
     background: url(../img/icon-publisher.png) no-repeat;
     background-size: 100%;
     left: 6px;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-publisher {
+    background: url(../img/icon-publisher_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-single i.icon-publisher {
+    background: url(../img/icon-publisher_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-single h3 {
     font-size: 18px;
     margin-bottom: 0;
@@ -1579,6 +1789,23 @@ body.mobile-menu-open {
     background: url(../img/heart-icon.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .subscribe-module .heart-icon i {
+    background: url(../img/heart-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .subscribe-module .heart-icon i {
+    background: url(../img/heart-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .subscribe-module span {
     font-size: 12px;
     font-weight: 400;
@@ -1631,6 +1858,23 @@ body.mobile-menu-open {
     background: url(../img/icon-mail_white.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .subscribe-module .icon-mail {
+    background: url(../img/icon-mail_white_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .subscribe-module .icon-mail {
+    background: url(../img/icon-mail_white_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .testimonials {
     padding-top: 15px;
   }
@@ -1646,6 +1890,23 @@ body.mobile-menu-open {
     background: url(../img/quotes.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .testimonials .quotes {
+    background: url(../img/quotes_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .testimonials .quotes {
+    background: url(../img/quotes_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .testimonials h2 {
     font-size: 18px;
     font-weight: 700;
@@ -1678,9 +1939,6 @@ body.mobile-menu-open {
   }
   .home-banner .home-banner-text h2 {
     font-size: 20px;
-  }
-  .home-banner .home-banner-text p {
-    font-size: 9px;
   }
 }
 
@@ -1716,15 +1974,38 @@ body.mobile-menu-open {
   background: url(../img/icon-advertiser.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .start-icon i.advertiser-icon {
+    background: url(../img/icon-advertiser_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .start-icon i.advertiser-icon {
+    background: url(../img/icon-advertiser_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .start-icon i.publisher-icon {
   background: url(../img/icon-publisher.png) no-repeat;
   position: relative;
   left: 12px;
 }
 
-.content .container {
-  max-width: 1170px;
-  padding: 0 4%;
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .start-icon i.publisher-icon {
+    background: url(../img/icon-publisher_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .start-icon i.publisher-icon {
+    background: url(../img/icon-publisher_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .get-started {
@@ -1796,10 +2077,38 @@ body.mobile-menu-open {
   background: url(../img/globe-icon.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-globe {
+    background: url(../img/globe-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-globe {
+    background: url(../img/globe-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .account-type-info .info-column .info-icon i.icon-finger {
   width: 50px;
   height: 75px;
   background: url(../img/finger-icon.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-finger {
+    background: url(../img/finger-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-finger {
+    background: url(../img/finger-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .account-type-info .info-column .info-icon i.icon-stats {
@@ -1808,10 +2117,38 @@ body.mobile-menu-open {
   background: url(../img/stats-icon.png) no-repeat;
 }
 
-.account-type-info .info-column .info-icon i.icon-globe {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-stats {
+    background: url(../img/stats-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-stats {
+    background: url(../img/stats-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+.account-type-info .info-column .info-icon i.icon-present {
   width: 67px;
   height: 65px;
   background: url(../img/icon-present.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-present {
+    background: url(../img/icon-present_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-present {
+    background: url(../img/icon-present_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .account-type-info .info-column .info-icon i.icon-ok {
@@ -1820,10 +2157,38 @@ body.mobile-menu-open {
   background: url(../img/icon-ok.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-ok {
+    background: url(../img/icon-ok_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-ok {
+    background: url(../img/icon-ok_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .account-type-info .info-column .info-icon i.icon-money {
   width: 74px;
   height: 46px;
   background: url(../img/icon-money.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-money {
+    background: url(../img/icon-money_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-money {
+    background: url(../img/icon-money_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .account-type-info .info-column h3 {
@@ -1835,6 +2200,31 @@ body.mobile-menu-open {
 .account-type-info .info-column p {
   margin: 0;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 767px) and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) {
+  .start-banner img {
+    min-height: 90px;
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+  .start-banner img {
+    min-height: 100px;
+  }
+}
+
+@media only screen and (max-width: 767px) and (max-width: 400px) {
+  .start-banner img {
+    min-height: 90px;
+  }
+}
+
+@media only screen and (max-width: 767px) and (width: 320px) {
+  .start-banner img {
+    height: auto;
+    min-height: initial;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1855,11 +2245,45 @@ body.mobile-menu-open {
     background: url(../img/icon-advertiser.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .start-icon i.advertiser-icon {
+    background: url(../img/icon-advertiser_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .start-icon i.advertiser-icon {
+    background: url(../img/icon-advertiser_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .start-icon i.publisher-icon {
     background: url(../img/icon-publisher.png) no-repeat;
     background-size: 100%;
     left: 5px;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .start-icon i.publisher-icon {
+    background: url(../img/icon-publisher_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .start-icon i.publisher-icon {
+    background: url(../img/icon-publisher_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .get-started {
     padding: 50px 0 20px;
     top: -78px;
@@ -1900,36 +2324,138 @@ body.mobile-menu-open {
     background: url(../img/globe-icon.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-globe {
+    background: url(../img/globe-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-globe {
+    background: url(../img/globe-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-info .info-column .info-icon i.icon-finger {
     width: 36px;
     height: 43px;
     background: url(../img/finger-icon.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-finger {
+    background: url(../img/finger-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-finger {
+    background: url(../img/finger-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-info .info-column .info-icon i.icon-stats {
     width: 40px;
     height: 40px;
     background: url(../img/stats-icon.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-stats {
+    background: url(../img/stats-icon_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-stats {
+    background: url(../img/stats-icon_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-info .info-column .info-icon i.icon-present {
     width: 42px;
     height: 41px;
     background: url(../img/icon-present.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-present {
+    background: url(../img/icon-present_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-present {
+    background: url(../img/icon-present_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-info .info-column .info-icon i.icon-ok {
     width: 42px;
     height: 40px;
     background: url(../img/icon-ok.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-ok {
+    background: url(../img/icon-ok_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-ok {
+    background: url(../img/icon-ok_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-info .info-column .info-icon i.icon-money {
     width: 43px;
     height: 35px;
     background: url(../img/icon-money.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-money {
+    background: url(../img/icon-money_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-info .info-column .info-icon i.icon-money {
+    background: url(../img/icon-money_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-info .info-column h3 {
     margin: 0 0 5px;
     font-size: 18px;
@@ -1977,11 +2503,39 @@ body.mobile-menu-open {
   left: 6px;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .add-user-icon {
+    background: url(../img/icon-add-user_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .add-user-icon {
+    background: url(../img/icon-add-user_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .icon-container .contact-icon {
   display: inline-block;
   width: 70px;
   height: 70px;
   background: url(../img/icon-envelope.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .contact-icon {
+    background: url(../img/icon-envelope_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .contact-icon {
+    background: url(../img/icon-envelope_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .icon-container .icon-lock {
@@ -1991,6 +2545,20 @@ body.mobile-menu-open {
   background: url(../img/icon-envelope.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .icon-lock {
+    background: url(../img/icon-envelope_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .icon-lock {
+    background: url(../img/icon-envelope_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .icon-container .icon-done {
   display: inline-block;
   width: 72px;
@@ -1998,11 +2566,39 @@ body.mobile-menu-open {
   background: url(../img/icon-done.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .icon-done {
+    background: url(../img/icon-done_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .icon-done {
+    background: url(../img/icon-done_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .icon-container .icon-registered {
   display: inline-block;
   width: 84px;
   height: 84px;
   background: url(../img/icon-registered.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .icon-registered {
+    background: url(../img/icon-registered_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .icon-container .icon-registered {
+    background: url(../img/icon-registered_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .register .content-main > h2 {
@@ -2052,10 +2648,38 @@ body.mobile-menu-open {
   background: url(../img/icon-advertiser-grey.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select i.icon-advertiser {
+    background: url(../img/icon-advertiser-grey_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select i.icon-advertiser {
+    background: url(../img/icon-advertiser-grey_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .account-type-select i.icon-publisher {
   width: 79px;
   height: 81px;
   background: url(../img/icon-publisher-grey.png) no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select i.icon-publisher {
+    background: url(../img/icon-publisher-grey_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select i.icon-publisher {
+    background: url(../img/icon-publisher-grey_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .account-type-select h3 {
@@ -2080,9 +2704,37 @@ body.mobile-menu-open {
   background-size: 100% 100%;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select.selected i.icon-advertiser {
+    background: url(../img/icon-advertiser_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select.selected i.icon-advertiser {
+    background: url(../img/icon-advertiser_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .account-type-select.selected i.icon-publisher {
   background: url(../img/icon-publisher.png) no-repeat;
   background-size: 100% 100%;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select.selected i.icon-publisher {
+    background: url(../img/icon-publisher_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .account-type-select.selected i.icon-publisher {
+    background: url(../img/icon-publisher_3x.png) no-repeat;
+    background-size: 100%;
+  }
 }
 
 .account-type-select.selected h3,
@@ -2142,8 +2794,8 @@ body.mobile-menu-open {
 }
 
 .create-account-form .container {
-  max-width: 500px;
-  padding: 0;
+  max-width: 500px !important;
+  padding: 0 !important;
 }
 
 .create-account-form form {
@@ -2389,6 +3041,20 @@ body.mobile-menu-open {
   background: url(../img/arrow-down.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .form-right .dropdown-toggle:after {
+    background: url(../img/arrow-down_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .form-right .dropdown-toggle:after {
+    background: url(../img/arrow-down_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .form-right .dropdown-list {
   display: none;
 }
@@ -2485,14 +3151,9 @@ body.mobile-menu-open {
   padding: 50px 0 70px;
 }
 
-.complete-registration-form .container {
-  max-width: 1170px;
-  padding: 0 4%;
-}
-
 .complete-registration-form h3 {
   clear: both;
-  overflow: auto;
+  overflow: hidden;
   font-size: 18px;
   color: #ff636f;
   margin: 0 0 70px;
@@ -2529,6 +3190,20 @@ body.mobile-menu-open {
   background: url(../img/arrow-down.png) no-repeat;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .complete-registration-form .dropdown-toggle:after {
+    background: url(../img/arrow-down_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .complete-registration-form .dropdown-toggle:after {
+    background: url(../img/arrow-down_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .complete-registration-form .dropdown-list {
   display: none;
 }
@@ -2549,12 +3224,35 @@ body.mobile-menu-open {
   margin: 0 auto 16px;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .complete-registration-form .upload-area i {
+    background: url(../img/icon-upload_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.5), only screen and (min--moz-device-pixel-ratio: 2.5), only screen and (min-device-pixel-ratio: 2.5), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .complete-registration-form .upload-area i {
+    background: url(../img/icon-upload_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
 .complete-registration-form .upload-area span {
   display: block;
   text-align: center;
   color: #ee2c78;
   font-size: 14px;
   font-weight: 300;
+}
+
+@media screen and (max-width: 1024px) {
+  .account-type-select .account-type-content {
+    margin: 0 120px;
+  }
+  .account-type-select .account-type-content.pull-right i {
+    margin-bottom: 10px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -2575,30 +3273,115 @@ body.mobile-menu-open {
     background-size: 100%;
     left: 4px;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .add-user-icon {
+    background: url(../img/icon-add-user_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .add-user-icon {
+    background: url(../img/icon-add-user_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .icon-container .contact-icon {
     width: 55px;
     height: 55px;
     background: url(../img/icon-envelope.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .contact-icon {
+    background: url(../img/icon-envelope_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .contact-icon {
+    background: url(../img/icon-envelope_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .icon-container .icon-lock {
     width: 55px;
     height: 55px;
     background: url(../img/icon-envelope.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .icon-lock {
+    background: url(../img/icon-envelope_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .icon-lock {
+    background: url(../img/icon-envelope_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .icon-container .icon-done {
     width: 56px;
     height: 56px;
     background: url(../img/icon-done.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .icon-done {
+    background: url(../img/icon-done_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .icon-done {
+    background: url(../img/icon-done_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .icon-container .icon-registered {
     width: 62px;
     height: 62px;
     background: url(../img/icon-registered.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .icon-registered {
+    background: url(../img/icon-registered_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .icon-container .icon-registered {
+    background: url(../img/icon-registered_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .register .content-main > h2 {
     font-size: 24px;
     margin: 0 0 5px;
@@ -2633,6 +3416,23 @@ body.mobile-menu-open {
     background: url(../img/icon-advertiser-grey.png) no-repeat;
     background-size: 100%;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-select i.icon-advertiser {
+    background: url(../img/icon-advertiser-grey_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-select i.icon-advertiser {
+    background: url(../img/icon-advertiser-grey_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-select i.icon-publisher {
     width: 54px;
     height: 55px;
@@ -2641,6 +3441,23 @@ body.mobile-menu-open {
     position: relative;
     left: 6px;
   }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 1.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-select i.icon-publisher {
+    background: url(../img/icon-publisher-grey_2x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min--moz-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (min-device-pixel-ratio: 2.5), only screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .account-type-select i.icon-publisher {
+    background: url(../img/icon-publisher-grey_3x.png) no-repeat;
+    background-size: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .account-type-select h3 {
     font-weight: 700;
     font-size: 18px;
@@ -2670,7 +3487,7 @@ body.mobile-menu-open {
     padding: 25px 0 40px;
   }
   .create-account-form .container {
-    padding: 4%;
+    padding: 4% !important;
   }
   .create-account-form form {
     width: 100%;
@@ -2749,6 +3566,7 @@ body.mobile-menu-open {
     height: 40px;
     line-height: 40px;
     font-size: 14px;
+    color: #fff;
   }
   .register-second-step .content-main > h2 {
     font-size: 24px;
